@@ -223,7 +223,7 @@ define dns::zone (
       group   => $dns::server::params::group,
       mode    => '0644',
       replace => $zone_replace,
-      require => Class['dns::server'],
+      require => Class['dns::server::config'],
       notify  => Exec["bump-${zone}-serial"]
     }
     concat::fragment{"db.${name}.soa":
